@@ -256,7 +256,15 @@ tests/                     unittest suite (python run.py test)
 * Not covered: OCR, scanned documents, Chinese-language declarations (name variants are a stress test only),
   business ownership, inheritance, crypto.
 
-## AI assistance
+## AI Usage Declaration (COMP7607 / COMP7608B)
 
-This skeleton was produced with AI assistance (Claude Code), adapting the team's MedScout harness. Per the course
-guideline, submit the project-related prompts and a short declaration of which tools/models were used and how.
+In accordance with the HKU COMP7607 / COMP7608B course guidelines on generative AI usage, the team declares the following AI tools and models used during the development and evaluation of **SoWScout2**:
+
+1. **Coding & Engineering Assistants (Development Time):**
+   - **Claude Code & OpenAI Codex:** Used to scaffold and iterate on the **SoWScout2** codebase (adapting the team's earlier `MedScout` agentic harness into the two-tier `workflow.py` + `harness.py` architecture, local web console `sowscout/web/` & `sowscout/ask/`, MCP server `sowscout/mcp_server.py`, deterministic tools, and unit/smoke test suites), as well as drafting synthetic onboarding case templates and TikZ diagram scaffolding (`docs/workflow.tex`).
+   - **Google Antigravity:** Used for proposal-to-codebase alignment verification, implementing exact formula scoring in `sowscout/evaluation.py` ($\text{ELVS}$ Eq. 1, $S/E/A$ component breakdowns, and Counterfactual Consistency Rate $\text{CCR}$ Eq. 2), integrating direct `.env` and DeepSeek API (`deepseek-chat`) support, refining the `property-purchase` skill playbook (`skills/property-purchase/SKILL.md`), analyzing live `dev` and `heldout` evaluation traces, and authoring [`docs/AGENT_HANDOFF.md`](file:///Users/alvintsoiwc/Desktop/HKU/7607_project/another_teammate_work/sowcout_v2/docs/AGENT_HANDOFF.md).
+2. **Evaluated Backbone LLMs (Runtime Agent Inference):**
+   - **DeepSeek V3 (`deepseek-chat` via DeepSeek OpenAI-compatible API):** Primary cloud LLM evaluated across **System A** (single-pass prompt baseline), **System B** (generic tool-calling agent without playbooks/gate), and **System C** (**SoWScout2** full workflow with domain skill playbooks, deterministic Python calculators, and verification gate).
+   - **Local Open-Weight Models (`qwen3.5:9b` via Ollama) & Deterministic Mock (`mock`):** Supported for local offline comparison and deterministic CI/plumbing tests.
+3. **Human Oversight & Verification:**
+   - All synthetic Hong Kong SoW onboarding cases, gold claim labels (`supported` / `unresolved` / `potential_red_flag`), expected funding gaps, counterfactual perturbations (`eval/cases.json`), deterministic verification firewall rules (`sowscout/verify.py`), and experimental conclusions were reviewed and validated by the project authors (Fung Chin Chun, Tsoi Wai Chit Alvin, and Lam Leung Fong). No real client or confidential banking data was used at any stage.

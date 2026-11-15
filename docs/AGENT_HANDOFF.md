@@ -202,3 +202,15 @@ Your codebase already implements the 3 ablation variants in `sowscout/config.py`
 2. **Optional Stretch Comparisons (If Asked by Reviewer/Instructor):**
    - **Retrieval Ablation:** Compare lexical `tfidf_rank` (`sowscout/tools/text.py`) against a sentence-embedding ranker on Top-1 chunk accuracy and MRR.
    - **Blinded Human Audit:** Have two teammates score 20 cited evidence spans across Systems A, B, and C to validate the automated `E` (`evidence_support`) metric.
+
+---
+
+## 7. AI Usage Declaration (Ready for Final Report & Course Submission)
+
+Per HKU COMP7607 / COMP7608B guidelines and Proposal §7, below is the consolidated record of AI tools and models used in this project:
+
+| Category | Tool / Model | How It Was Used in SoWScout2 | Human Verification by Team |
+| :--- | :--- | :--- | :--- |
+| **Code Scaffolding & UI/Harness Engineering** | **Claude Code** & **OpenAI Codex** | Used to adapt the team's `MedScout` agentic harness into the two-tier `sowscout` architecture (`workflow.py` + `harness.py`), build the web UI (`sowscout/web/`, `sowscout/ask/`), MCP server (`mcp_server.py`), deterministic calculator/registry tools, synthetic document templates, and test suites (`tests/`). | All tool schemas, safety boundaries, and gold case numbers were manually checked and tested against `python run.py test`. |
+| **Metrics Alignment, Debugging & Evaluation Analysis** | **Google Antigravity** | Used to audit codebase alignment against the 6-page proposal PDF, implement exact `ELVS` (Eq. 1), $S_i/E_i/A_i$ component metrics, and `CCR` (Eq. 2) in `sowscout/evaluation.py`, configure `.env` + direct DeepSeek API support, refine `skills/property-purchase/SKILL.md` to eliminate down-payment double-counting, and document `dev`/`heldout` evaluation findings. | Verified via unit tests (`tests/test_agent.py`) and live evaluation runs on `dev` (`20261115-162336.md`) and `heldout` (`20261115-164639.md`). |
+| **Runtime Agent Backbone LLMs (Subject of Study)** | **DeepSeek V3 (`deepseek-chat`)**, **Qwen 3.5 (`qwen3.5:9b` via Ollama)** | Used at runtime as the evaluated LLM backbones inside Systems A, B, and C to extract claims, plan tasks, invoke verification tools, and draft evidence-linked SoW memos. | Evaluated quantitatively via `ELVS`, `CCR`, Red-Flag Recall, False-Flag Rate, and funding-gap arithmetic error against gold labels. |
