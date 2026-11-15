@@ -166,24 +166,34 @@ Command: `python run.py eval --split heldout --systems A,B,C --provider openai -
 
 ---
 
-### Priority 2: Run the Ablation Study & Multi-Run Evaluation (Proposal §4.2)
-Your codebase already implements the 3 ablation variants in `sowscout/config.py`. Run them to populate the **Ablation Table** in your final report:
-1. **Run the 3 Ablations (`C-no-calc`, `C-no-gate`, `C-no-skills`):**
-   ```bash
-   python run.py eval --split all --systems C-no-calc,C-no-gate,C-no-skills --provider openai --model deepseek-chat
-   ```
-   - `C-no-calc`: Proves why deterministic Python arithmetic (`check_consistency` / `calc_wealth_timeline`) is needed over LLM mental math.
-   - `C-no-gate`: Proves why the deterministic Python completion firewall (`sowscout/verify.py`) is needed to prevent unsupported `supported` verdicts.
-   - `C-no-skills`: Proves why domain playbooks (`skills/*/SKILL.md`) are needed to guide multi-step verification (e.g., catching `wong`'s third-party wire).
-2. **Multi-Run Stability (`--runs 3`) (Proposal §4.3):**
+### Priority 2: Ablation study (done) and what is still open (Proposal §4.2)
+
+**Done, 15 Nov 2026.** One DeepSeek pass of the three ablations on all 6 clients (20 gold claims). Report: `eval/results/20261115-180529.md`.
+
+```bash
+python run.py eval --systems C-no-calc,C-no-gate,C-no-skills --provider openai --model deepseek-chat
+```
+
+| Version | Fully correct claims | Plain-language result |
+|---|---|---|
+| Full C (earlier dev + held-out runs, stitched) | 18 of 20 | Best overall. Caught every red flag. |
+| C without the gate | 18 of 20 | Same headline count on this single pass. |
+| C without the calculator | 17 of 20 | Labels mostly survive. Wong is still a red flag, but the HKD 1,669,000 gap is not accepted. Chan's fully funded purchase cannot be marked supported. |
+| C without playbooks | 15 of 20 | Falls back to the same level as Systems A and B. Wong's flat stays unresolved instead of a red flag. Ho's Discovery Bay purchase and Ng's Ma On Shan purchase are marked supported without a payment-period bank statement. |
+
+High-level finding: the playbooks are what separate C from A and B on this model. The calculator is what makes the money figure trustworthy. The gate did not change the headline count in this one pass. Cheung's new salary came out unresolved in all three ablations even though full C had got it right earlier, so some differences are run-to-run variation. A `--runs 3` repeat is still the open measurement.
+
+**Local model smoke test, not a full score.** Qwen 3.5 9B (`qwen3.5:9b` via Ollama, thinking off) was tried on Wong only, system C. The first attempt was stopped because model calls exceeded the 120-second HTTP timeout. The second run used `SOWSCOUT_LLM_TIMEOUT=300`, `SOWSCOUT_TASK_DEADLINE=480`, and `SOWSCOUT_RUN_DEADLINE=2400` (`runs/20261115-174026-34f730`, about 22 minutes). Salary and bonus were left unresolved because the task clock ran out after the model invented a tax conflict (HKD 62,000 × 12 is exactly the HKD 744,000 on the tax notice). The flat was correctly a red flag because of the unexplained HKD 1.8 million Kaiwing credit, but the published funding gap was HKD 0 rather than HKD 1,669,000. Document search and the calculator themselves took well under a second; each Qwen decision took 35 seconds to 4 minutes. A full A/B/C eval on this model was not run. Those numbers would mix real mistakes with timeouts.
+
+`run.py` now reads `SOWSCOUT_TASK_DEADLINE` and `SOWSCOUT_RUN_DEADLINE` when set. Unset, the limits stay 120 seconds per task and 900 seconds per run. `SOWSCOUT_LLM_TIMEOUT` (default 120) was already wired in `sowscout/llm.py`.
+
+**Still open:**
+1. **Multi-Run Stability (`--runs 3`) (Proposal §4.3):**
    ```bash
    python run.py eval --split all --systems A,B,C --runs 3 --provider openai --model deepseek-chat
    ```
    - Computes mean $\pm$ min–max range across 3 runs for the final report.
-3. **Optional Local Open-Weight Model Comparison (`qwen3.5:9b` via Ollama):**
-   ```bash
-   SOWSCOUT_OLLAMA_THINK=false python run.py eval --split all --systems A,B,C --provider ollama --model qwen3.5:9b
-   ```
+2. **Do not run a full Qwen 3.5 9B A/B/C eval for the report table.** The Wong smoke test above is the local-model evidence. A six-client run would take hours, and many unresolved labels would be timeouts.
 
 ---
 

@@ -49,6 +49,10 @@ def _settings(a) -> Settings:
     s.interactive = bool(getattr(a, "interactive", False))
     if getattr(a, "max_steps", None):
         s.limits.max_steps_per_task = a.max_steps
+    if os.environ.get("SOWSCOUT_TASK_DEADLINE"):
+        s.limits.task_deadline_s = float(os.environ["SOWSCOUT_TASK_DEADLINE"])
+    if os.environ.get("SOWSCOUT_RUN_DEADLINE"):
+        s.limits.run_deadline_s = float(os.environ["SOWSCOUT_RUN_DEADLINE"])
     return s
 
 
