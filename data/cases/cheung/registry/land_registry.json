@@ -1,0 +1,8 @@
+{"registry": "Mock Land Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"property_ref": "PR-ALC-GM-9A", "address": "Flat 9A, Grand Marine, 3 Ap Lei Chau Drive, Ap Lei Chau, Hong Kong",
+  "owners": [{"name": "CHEUNG Wing Sze", "from": "2019-07-12", "to": "2025-11-28"}, {"name": "LAI Hoi Ting", "from": "2025-11-28", "to": ""}],
+  "transactions": [
+   {"memorial_no": "19071200388", "date": "2019-07-12", "nature": "Assignment", "consideration": 12500000, "from": "FUNG Yat", "to": "CHEUNG Wing Sze"},
+   {"memorial_no": "19071200389", "date": "2019-07-12", "nature": "Mortgage", "amount": 6250000, "lender": "Lion Rock Bank", "mortgagor": "CHEUNG Wing Sze"},
+   {"memorial_no": "25112801102", "date": "2025-11-28", "nature": "Assignment", "consideration": 14200000, "from": "CHEUNG Wing Sze", "to": "LAI Hoi Ting"}]}
+]}

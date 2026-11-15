@@ -1,0 +1,6 @@
+{"registry": "Mock Companies Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"cr_number": "1300421", "name_en": "Harbourview Logistics Limited", "name_zh": "海景物流有限公司", "former_names": [],
+  "incorporated": "2009-04-14", "status": "Live", "dissolved": "", "company_type": "Private company limited by shares"},
+ {"cr_number": "0954318", "name_en": "Pearl Delta Trading Company Limited", "name_zh": "珠三角貿易有限公司", "former_names": [],
+  "incorporated": "2005-02-01", "status": "Dissolved", "dissolved": "2022-09-30", "company_type": "Private company limited by shares"}
+]}

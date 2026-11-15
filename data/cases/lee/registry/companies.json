@@ -1,0 +1,6 @@
+{"registry": "Mock Companies Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"cr_number": "3077215", "name_en": "Golden Crane Trading Limited", "name_zh": "金鶴貿易有限公司", "former_names": [],
+  "incorporated": "2021-08-02", "status": "Live", "dissolved": "", "company_type": "Private company limited by shares"},
+ {"cr_number": "0643390", "name_en": "Eastwind Shipping Limited", "name_zh": "東風航運有限公司", "former_names": [],
+  "incorporated": "1998-03-19", "status": "Live", "dissolved": "", "company_type": "Private company limited by shares"}
+]}

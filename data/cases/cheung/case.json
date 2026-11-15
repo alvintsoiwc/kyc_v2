@@ -1,0 +1,8 @@
+{"client": "Cheung Wing Sze", "client_ref": "SYN-CL-006", "split": "heldout",
+ "description": "FICTIONAL returning client. Earlier review verified employment (at a lower salary) and a 2019 purchase; new salary and a 2025 sale need fresh evidence.",
+ "memory": [
+  {"fact_id": "cws-emp-2025", "category": "employment", "statement": "Employed by Tai Ping Insurance Brokers Limited since 2015; monthly salary HKD 95,000 (payslip and employment letter reviewed).",
+   "entity": "Tai Ping Insurance Brokers Limited", "amount": 95000, "currency": "HKD", "date": "2015-09", "verified_on": "2025-03-10", "confirmed_by": "officer:SYN-KYC-07"},
+  {"fact_id": "cws-prop-2019", "category": "property_purchase", "statement": "Purchased Flat 9A, Grand Marine, Ap Lei Chau on 2019-07-12 for HKD 12,500,000 (assignment, land search and bank records reviewed; funding reconciled).",
+   "entity": "Flat 9A, Grand Marine, Ap Lei Chau", "amount": 12500000, "currency": "HKD", "date": "2019-07", "verified_on": "2025-03-10", "confirmed_by": "officer:SYN-KYC-07"}
+ ]}

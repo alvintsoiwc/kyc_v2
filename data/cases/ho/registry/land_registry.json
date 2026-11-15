@@ -1,0 +1,12 @@
+{"registry": "Mock Land Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"property_ref": "PR-TW-BG-18A", "address": "Flat 18A, Bayview Garden, 633 Castle Peak Road, Tsuen Wan, New Territories",
+  "owners": [{"name": "HO Mei Ling", "from": "2011-04-08", "to": "2022-05-27"}, {"name": "SIU Kwok Fai", "from": "2022-05-27", "to": ""}],
+  "transactions": [
+   {"memorial_no": "11040800721", "date": "2011-04-08", "nature": "Assignment", "consideration": 3900000, "from": "TAM Lai", "to": "HO Mei Ling"},
+   {"memorial_no": "22052701340", "date": "2022-05-27", "nature": "Assignment", "consideration": 6900000, "from": "HO Mei Ling", "to": "SIU Kwok Fai"}]},
+ {"property_ref": "PR-DB-ST-6B", "address": "Flat 6B, Seaview Terrace, Discovery Bay, Lantau Island",
+  "owners": [{"name": "HO Mei Ling", "from": "2023-01-18", "to": ""}],
+  "transactions": [
+   {"memorial_no": "23011800215", "date": "2023-01-18", "nature": "Assignment", "consideration": 10200000, "from": "BERNARD Hugh", "to": "HO Mei Ling"},
+   {"memorial_no": "23011800216", "date": "2023-01-18", "nature": "Mortgage", "amount": 4000000, "lender": "Peak Fortune Bank", "mortgagor": "HO Mei Ling"}]}
+]}

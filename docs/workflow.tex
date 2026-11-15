@@ -1,0 +1,53 @@
+% Editable TikZ source for Figure 1.
+% The layout mirrors the MedScout plan--verify--reconcile--review pattern,
+% but its branches are specialized for Hong Kong SoW verification.
+\begin{tikzpicture}[
+    font=\sffamily\scriptsize,
+    >=Latex,
+    node distance=3mm,
+    base/.style={draw=blue!48!black, line width=.45pt, rounded corners=3pt,
+      fill=blue!5, align=center, inner xsep=4pt, inner ysep=4pt},
+    stage/.style={base,text width=6.9cm,minimum height=.82cm},
+    branch/.style={base,text width=2.37cm,minimum height=.82cm},
+    side/.style={base,text width=2.08cm,fill=blue!2},
+    decision/.style={base,dashed,fill=white,text width=3.1cm},
+    edge/.style={->,line width=.48pt,draw=black!60},
+    note/.style={font=\sffamily\tiny,text=black!65}
+]
+\node[stage] (input) at (0,0) {\textbf{Client declaration and evidence packet}\\Narrative, payslips, bank/tax records, property documents};
+\node[stage] (intake) at (0,-1.08) {\textbf{1. Intake and standardisation}\\Parse documents; assign evidence IDs and source locations; mask PII};
+\node[stage] (claims) at (0,-2.16) {\textbf{2. Extract checkable SoW claims}\\Source type, persons/entities, time, currency, amount, asserted event};
+\node[decision,text width=5.0cm] (planner) at (0,-3.24) {\textbf{3. Verification planner}\\Select evidence questions, tool route and a relevant skill};
+\node[side] (memory) at (-4.68,-3.24) {\textbf{Client memory}\\Previously verified facts};
+\node[branch] (policy) at (-4.05,-4.54) {\textbf{Policy guidance}\\AML/SoW guidance RAG};
+\node[branch] (employment) at (-1.35,-4.54) {\textbf{Employment}\\Mock company registry; salary/tax};
+\node[branch] (property) at (1.35,-4.54) {\textbf{Property}\\Mock land registry; funding};
+\node[branch] (bank) at (4.05,-4.54) {\textbf{Documents}\\Bank/payslip/tax matching};
+\node[stage] (check) at (0,-5.75) {\textbf{4. Evidence and deterministic consistency checks}\\Claim--evidence matching, arithmetic timeline, conflicts, possible red flags};
+\node[decision] (sufficient) at (0,-6.87) {\textbf{Sufficient evidence or stop limit?}};
+\node[side,text width=2.45cm] (gap) at (4.45,-6.87) {\textbf{Missing documents?}\\Request evidence / keep gaps};
+\node[stage] (findings) at (0,-8.03) {\textbf{5. Evidence-linked findings}\\Supported / unresolved / potential red flag; source IDs for each finding};
+\node[stage] (valid) at (0,-9.18) {\textbf{6. Citation and completion gate}\\Verify evidence IDs, numeric results, missing fields and safe status};
+\node[stage] (memo) at (0,-10.33) {\textbf{7. Draft SoW memo}\\Findings, evidence excerpts, wealth timeline, outstanding questions};
+\node[decision,text width=6.9cm,minimum height=.82cm] (reviewer) at (0,-11.48) {\textbf{Optional: independent reviewer}\\Fresh context, no tools; checks that each cited span supports its finding};
+\node[stage,fill=blue!11] (human) at (0,-12.63) {\textbf{8. Human compliance review}\\Officer decides next steps; the agent cannot approve or reject onboarding};
+\node[base,text width=10.9cm,fill=black!3,draw=black!23,inner ysep=3pt] (harness) at (0,-13.71) {\textbf{Harness (every step):} read-only tool permissions, step and cost caps, typed state, event logs, citation checks and bounded retries};
+
+\draw[edge] (input) -- (intake);
+\draw[edge] (intake) -- (claims);
+\draw[edge] (claims) -- (planner);
+\draw[edge] (memory) -- (planner);
+\foreach \n in {policy,employment,property,bank} {\draw[edge] (planner.south) -- (\n.north);}
+\foreach \n in {policy,employment,property,bank} {\draw[edge] (\n.south) -- (check.north);}
+\draw[edge] (check) -- (sufficient);
+\draw[edge] (sufficient) -- (findings);
+\draw[edge] (sufficient.east) -- node[above,note]{No} (gap.west);
+% Feedback loop is bounded by the harness; never allowed to run indefinitely.
+\draw[edge,rounded corners=5pt] (gap.east) -- (6.14,-6.87) -- (6.14,-3.24) -- (planner.east);
+\draw[edge] (findings) -- (valid);
+\draw[edge] (valid) -- (memo);
+\draw[edge] (memo) -- (reviewer);
+\draw[edge] (reviewer) -- (human);
+% The reviewer is optional: the pipeline can bypass it.
+\draw[edge,dashed,rounded corners=5pt] (memo.east) -- (3.95,-10.33) -- (3.95,-12.63) -- (human.east);
+\end{tikzpicture}

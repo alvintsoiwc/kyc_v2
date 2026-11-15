@@ -1,0 +1,6 @@
+{"registry": "Mock Companies Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"cr_number": "2581144", "name_en": "Silverline Digital Limited", "name_zh": "銀線數碼有限公司", "former_names": [],
+  "incorporated": "2016-07-11", "status": "Live", "dissolved": "", "company_type": "Private company limited by shares"},
+ {"cr_number": "3011902", "name_en": "Kaiwing Holdings Limited", "name_zh": "啟榮控股有限公司", "former_names": [],
+  "incorporated": "2023-05-02", "status": "Live", "dissolved": "", "company_type": "Private company limited by shares"}
+]}

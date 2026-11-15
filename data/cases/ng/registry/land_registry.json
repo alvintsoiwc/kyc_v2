@@ -1,0 +1,7 @@
+{"registry": "Mock Land Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"property_ref": "PR-MOS-SC-B3-21F", "address": "Flat 21F, Block 3, Sunshine City, 18 On Shing Street, Ma On Shan, New Territories",
+  "owners": [{"name": "NG Siu Fung", "from": "2024-03-22", "to": ""}],
+  "transactions": [
+   {"memorial_no": "24032200650", "date": "2024-03-22", "nature": "Assignment", "consideration": 6300000, "from": "CHEUK Man", "to": "NG Siu Fung"},
+   {"memorial_no": "24032200651", "date": "2024-03-22", "nature": "Mortgage", "amount": 4410000, "lender": "Victoria Harbour Bank", "mortgagor": "NG Siu Fung"}]}
+]}

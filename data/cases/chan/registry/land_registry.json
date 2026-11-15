@@ -1,0 +1,11 @@
+{"registry": "Mock Land Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"property_ref": "PR-TP-LG-T2-12B", "address": "Flat 12B, Tower 2, Lime Grove, 8 Lime Road, Tai Po, New Territories",
+  "owners": [{"name": "CHAN Tai Man", "from": "2021-06-30", "to": ""}],
+  "transactions": [
+   {"memorial_no": "21063000877", "date": "2021-06-30", "nature": "Assignment", "consideration": 8200000, "from": "KWOK Siu Lan", "to": "CHAN Tai Man"},
+   {"memorial_no": "21063000878", "date": "2021-06-30", "nature": "Mortgage", "amount": 4920000, "lender": "Victoria Harbour Bank", "mortgagor": "CHAN Tai Man"}]},
+ {"property_ref": "PR-ST-KC-C-5A", "address": "Flat 5A, Block C, Kingsford Court, Sha Tin, New Territories",
+  "owners": [{"name": "CHAN Tai Man", "from": "2012-11-15", "to": ""}],
+  "transactions": [
+   {"memorial_no": "12111501234", "date": "2012-11-15", "nature": "Assignment", "consideration": 3150000, "from": "YIP Wai Man", "to": "CHAN Tai Man"}]}
+]}

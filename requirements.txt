@@ -1,0 +1,8 @@
+# Core (required)
+jsonschema>=4.20          # tool / decision contract validation (tested 4.26.0)
+# Optional
+pypdf>=4.0                # .pdf client documents (tested 6.17.0)
+fastmcp>=2.10             # --transport mcp: mock-registry tools served over MCP (tested 4.1.6)
+certifi                   # HTTPS certificates for Ask web search
+# Model access uses the Python standard library (urllib): Ollama, any OpenAI-compatible
+# endpoint, or Azure-style deployments. No SDK needed.

@@ -1,0 +1,7 @@
+{"registry": "Mock Land Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"property_ref": "PR-TKO-HC-8C", "address": "Flat 8C, Harbour Crest, 22 Ocean Road, Tseung Kwan O, New Territories",
+  "owners": [{"name": "WONG Ka Yan", "from": "2023-10-20", "to": ""}],
+  "transactions": [
+   {"memorial_no": "23102001456", "date": "2023-10-20", "nature": "Assignment", "consideration": 9800000, "from": "TSANG Pui Shan", "to": "WONG Ka Yan"},
+   {"memorial_no": "23102001457", "date": "2023-10-20", "nature": "Mortgage", "amount": 6860000, "lender": "Lion Rock Bank", "mortgagor": "WONG Ka Yan"}]}
+]}

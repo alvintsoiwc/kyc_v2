@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+runs/
+eval/results/*
+!eval/results/.gitkeep
+!eval/results/20261115-162336.md
+!eval/results/20261115-164639.md
+.env
+sowscout-mvp.zip

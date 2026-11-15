@@ -1,0 +1,433 @@
+{
+  "_doc": "Gold records for the synthetic benchmark (proposal §4.1). Each expected item matches the system finding whose claim text contains ALL 'match' strings (case-insensitive). status: gold label. evidence: a justified link must cite evidence whose identifier contains one of these strings (document span ids, CR numbers, property refs, 'timeline:' / 'consistency:' calculations, 'memory:'). fields: normalised claim fields for extraction scoring. values: gold arithmetic (tolerance 1%). Status rules fixed before annotation: supported = cited span matches and numbers agree within 5%; unresolved = required evidence missing; potential_red_flag = cited evidence conflicts or numbers fail to reconcile beyond 5%. Gold labels were set by hand by one author from the synthetic data; the proposal requires two independent annotators + adjudication before the held-out evaluation.",
+  "scenarios": [
+    {
+      "id": "chan",
+      "case": "chan",
+      "split": "dev",
+      "kind": "clean salary, funded purchase, rental; earlier job undocumented",
+      "expected": [
+        {
+          "match": [
+            "Harbourview"
+          ],
+          "status": "supported",
+          "evidence": [
+            "payslip",
+            "employment_letter",
+            "1300421"
+          ],
+          "fields": {
+            "category": "employment",
+            "entity": "Harbourview Logistics Limited",
+            "amount": 85000,
+            "date": "2018-03"
+          }
+        },
+        {
+          "match": [
+            "Pearl Delta"
+          ],
+          "status": "unresolved",
+          "fields": {
+            "category": "employment",
+            "entity": "Pearl Delta Trading Company Limited",
+            "date": "2012"
+          }
+        },
+        {
+          "match": [
+            "Lime Grove"
+          ],
+          "status": "supported",
+          "evidence": [
+            "PR-TP-LG-T2-12B",
+            "timeline:"
+          ],
+          "fields": {
+            "category": "property_purchase",
+            "amount": 8200000,
+            "date": "2021-06"
+          },
+          "values": {
+            "funding_gap_hkd": 0
+          }
+        },
+        {
+          "match": [
+            "Kingsford Court"
+          ],
+          "status": "supported",
+          "evidence": [
+            "tenancy",
+            "PR-ST-KC-C-5A"
+          ],
+          "fields": {
+            "category": "rental",
+            "amount": 18000,
+            "date": "2021-09"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wong",
+      "case": "wong",
+      "split": "dev",
+      "kind": "unexplained third-party credit and funding gap",
+      "expected": [
+        {
+          "match": [
+            "Silverline",
+            "per month"
+          ],
+          "status": "supported",
+          "evidence": [
+            "payslip",
+            "2581144"
+          ],
+          "fields": {
+            "category": "employment",
+            "entity": "Silverline Digital Limited",
+            "amount": 62000,
+            "date": "2019-01"
+          }
+        },
+        {
+          "match": [
+            "bonus"
+          ],
+          "status": "supported",
+          "evidence": [
+            "payslip"
+          ],
+          "fields": {
+            "category": "employment",
+            "amount": 120000,
+            "date": "2023-03"
+          }
+        },
+        {
+          "match": [
+            "Harbour Crest"
+          ],
+          "status": "potential_red_flag",
+          "evidence": [
+            "timeline:",
+            "bank_statement"
+          ],
+          "fields": {
+            "category": "property_purchase",
+            "amount": 9800000,
+            "date": "2023-10"
+          },
+          "values": {
+            "funding_gap_hkd": 1669000
+          }
+        }
+      ]
+    },
+    {
+      "id": "lee",
+      "case": "lee",
+      "split": "heldout",
+      "kind": "company-record problem and payslip / tax mismatch",
+      "expected": [
+        {
+          "match": [
+            "Golden Crane"
+          ],
+          "status": "potential_red_flag",
+          "evidence": [
+            "3077215",
+            "tax_assessment",
+            "consistency:"
+          ],
+          "fields": {
+            "category": "employment",
+            "entity": "Golden Crane Trading Limited",
+            "amount": 150000,
+            "date": "2020-04"
+          }
+        },
+        {
+          "match": [
+            "Eastwind"
+          ],
+          "status": "supported",
+          "evidence": [
+            "employment_letter_eastwind",
+            "0643390"
+          ],
+          "fields": {
+            "category": "employment",
+            "entity": "Eastwind Shipping Limited",
+            "date": "2014-06"
+          }
+        },
+        {
+          "match": [
+            "Wing Fat"
+          ],
+          "status": "supported",
+          "evidence": [
+            "PR-MK-WFM-3D",
+            "bank_statement"
+          ],
+          "fields": {
+            "category": "property_sale",
+            "amount": 5600000,
+            "date": "2019-08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ho",
+      "case": "ho",
+      "split": "heldout",
+      "kind": "conflicting narrative, sale price conflict, unevidenced sale proceeds, business income",
+      "expected": [
+        {
+          "match": [
+            "May 2022",
+            "Bayview"
+          ],
+          "status": "potential_red_flag",
+          "evidence": [
+            "PR-TW-BG-18A"
+          ],
+          "fields": {
+            "category": "property_sale",
+            "amount": 7500000,
+            "date": "2022-05"
+          }
+        },
+        {
+          "match": [
+            "Seaview"
+          ],
+          "status": "unresolved",
+          "fields": {
+            "category": "property_purchase",
+            "amount": 10200000,
+            "date": "2023-01"
+          }
+        },
+        {
+          "match": [
+            "Mei Advisory"
+          ],
+          "status": "unresolved",
+          "fields": {
+            "category": "other"
+          }
+        },
+        {
+          "match": [
+            "2021",
+            "Bayview"
+          ],
+          "status": "potential_red_flag",
+          "evidence": [
+            "PR-TW-BG-18A"
+          ],
+          "fields": {
+            "category": "property_sale",
+            "amount": 7500000,
+            "date": "2021"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ng",
+      "case": "ng",
+      "split": "heldout",
+      "kind": "third-party gift and incomplete documents",
+      "expected": [
+        {
+          "match": [
+            "Kowloon Bay"
+          ],
+          "status": "supported",
+          "evidence": [
+            "payslip",
+            "1022873"
+          ],
+          "fields": {
+            "category": "employment",
+            "entity": "Kowloon Bay Medical Centre Limited",
+            "amount": 48000,
+            "date": "2016-07"
+          }
+        },
+        {
+          "match": [
+            "gave me"
+          ],
+          "status": "unresolved",
+          "fields": {
+            "category": "third_party",
+            "amount": 1500000,
+            "date": "2024-02"
+          }
+        },
+        {
+          "match": [
+            "Sunshine City"
+          ],
+          "status": "unresolved",
+          "fields": {
+            "category": "property_purchase",
+            "amount": 6300000,
+            "date": "2024-03"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cheung",
+      "case": "cheung",
+      "split": "heldout",
+      "kind": "returning client with officer-verified memory",
+      "expected": [
+        {
+          "match": [
+            "Tai Ping"
+          ],
+          "status": "supported",
+          "evidence": [
+            "payslip"
+          ],
+          "fields": {
+            "category": "employment",
+            "entity": "Tai Ping Insurance Brokers Limited",
+            "amount": 110000,
+            "date": "2025-04"
+          }
+        },
+        {
+          "match": [
+            "purchased",
+            "Grand Marine"
+          ],
+          "status": "supported",
+          "evidence": [
+            "memory:"
+          ],
+          "fields": {
+            "category": "property_purchase",
+            "amount": 12500000,
+            "date": "2019-07"
+          }
+        },
+        {
+          "match": [
+            "sold",
+            "Grand Marine"
+          ],
+          "status": "supported",
+          "evidence": [
+            "PR-ALC-GM-9A"
+          ],
+          "fields": {
+            "category": "property_sale",
+            "amount": 14200000,
+            "date": "2025-11"
+          }
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "id": "cf_lee_remove_letter",
+      "base": "lee",
+      "kind": "(i) remove a key supporting document",
+      "edits": [
+        {
+          "op": "remove",
+          "doc": "04_employment_letter_eastwind.md"
+        }
+      ],
+      "expected": [
+        {
+          "match": [
+            "Eastwind"
+          ],
+          "status": "unresolved",
+          "change": true
+        }
+      ]
+    },
+    {
+      "id": "cf_ng_salary_conflict",
+      "base": "ng",
+      "kind": "(ii) change a material amount to conflict with evidence",
+      "edits": [
+        {
+          "op": "replace",
+          "doc": "01_declaration.md",
+          "old": "HKD 48,000 per month",
+          "new": "HKD 58,000 per month"
+        }
+      ],
+      "expected": [
+        {
+          "match": [
+            "Kowloon Bay"
+          ],
+          "status": "potential_red_flag",
+          "change": true,
+          "evidence": [
+            "consistency:",
+            "payslip"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cf_cheung_paraphrase",
+      "base": "cheung",
+      "kind": "(iii) paraphrase without changing facts",
+      "edits": [
+        {
+          "op": "replace",
+          "doc": "01_declaration.md",
+          "old": "I continue to work at Tai Ping Insurance Brokers Limited as Regional Director, earning HKD 110,000 per month since April 2025.",
+          "new": "Since April 2025 my monthly salary at Tai Ping Insurance Brokers Limited, where I am Regional Director, has been HKD 110,000."
+        },
+        {
+          "op": "replace",
+          "doc": "01_declaration.md",
+          "old": "In November 2025 I sold Flat 9A, Grand Marine, Ap Lei Chau for HKD 14,200,000.",
+          "new": "In November 2025, Flat 9A, Grand Marine, Ap Lei Chau was sold by me for HKD 14,200,000."
+        }
+      ],
+      "expected": [
+        {
+          "match": [
+            "Tai Ping"
+          ],
+          "status": "supported",
+          "change": false,
+          "evidence": [
+            "payslip"
+          ]
+        },
+        {
+          "match": [
+            "sold",
+            "Grand Marine"
+          ],
+          "status": "supported",
+          "change": false,
+          "evidence": [
+            "PR-ALC-GM-9A"
+          ]
+        }
+      ]
+    }
+  ]
+}

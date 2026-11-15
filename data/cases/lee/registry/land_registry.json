@@ -1,0 +1,7 @@
+{"registry": "Mock Land Registry (SYNTHETIC)", "synthetic": true, "records": [
+ {"property_ref": "PR-MK-WFM-3D", "address": "Flat 3D, Wing Fat Mansion, 31 Fa Yuen Street, Mong Kok, Kowloon",
+  "owners": [{"name": "LEE Chi Keung", "from": "2008-03-03", "to": "2019-08-16"}, {"name": "HO Chun Yu", "from": "2019-08-16", "to": ""}],
+  "transactions": [
+   {"memorial_no": "08030300511", "date": "2008-03-03", "nature": "Assignment", "consideration": 2350000, "from": "MAK Kin", "to": "LEE Chi Keung"},
+   {"memorial_no": "19081600992", "date": "2019-08-16", "nature": "Assignment", "consideration": 5600000, "from": "LEE Chi Keung", "to": "HO Chun Yu"}]}
+]}
